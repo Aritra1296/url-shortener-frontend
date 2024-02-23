@@ -16,7 +16,7 @@ function Component({ shortUrl, fullUrl, buttonCallBack }: ComponentInterface) {
           buttonCallBack(shortUrl);
         }}
       >
-        OPEN
+        Open
       </button>
     </div>
   );
