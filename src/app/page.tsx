@@ -1,6 +1,6 @@
 "use client";
 import { useState, FormEvent, useEffect } from "react";
-import axios from "axios";
+import axios from "../config/axios";
 import Component from "./Component";
 import { ComponentInterface } from "./types";
 
@@ -14,7 +14,7 @@ export default function Home() {
 
   async function onClikShortUrl(shortUrl: string) {
     try {
-      const url = await axios.get(`http://localhost:5000/${shortUrl}`);
+      const url = await axios.get(`/${shortUrl}`);
       window.open(url.data.fullUrl);
     } catch (error) {
       console.log(error);
@@ -29,7 +29,7 @@ export default function Home() {
     };
     try {
       const response = await axios.post(
-        `http://localhost:5000/shortUrl`,
+        `/shortUrl`,
         data,
         {
           headers: {
@@ -46,7 +46,7 @@ export default function Home() {
 
   const loadData = async () => {
     try {
-      const result = await axios.get(`http://localhost:5000/`);
+      const result = await axios.get(`/`);
       setUrls(result.data);
     } catch (error) {
       console.log(error);
@@ -79,7 +79,7 @@ export default function Home() {
           </button>
         </form>
 
-        <div role="status">
+        {/* <div role="status">
           <svg
             aria-hidden="true"
             className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
@@ -97,7 +97,7 @@ export default function Home() {
             />
           </svg>
           <span className="sr-only">Loading...</span>
-        </div>
+        </div> */}
 
         <div className="flex flex-col justify-between items-center">
           {urls?.map((obj) => (
