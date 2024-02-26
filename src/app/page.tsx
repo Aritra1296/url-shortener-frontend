@@ -15,6 +15,7 @@ export default function Home() {
   async function onClikShortUrl(shortUrl: string) {
     try {
       const url = await axios.get(`/${shortUrl}`);
+      
       window.open(url.data.fullUrl);
     } catch (error) {
       console.log(error);
